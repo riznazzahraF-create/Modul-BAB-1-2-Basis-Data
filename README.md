@@ -1,29 +1,60 @@
-# Rangkuman Modul Basis Data — BAB 1 & 2
-Ringkasan untuk Basis Data pada BAB 1 & 2 supaya mudah untuk dipahami dan dicerna.
+# 📚 Rangkuman Modul Basis Data — BAB 1 & BAB 2
+Dokumen ini merangkum konsep inti dari konversi ER ke model relasional serta pengantar Basis Data dan DDL.
 
 ---
 
-## 📘 BAB 1 — Konversi ER ke Model Relasional
+## **🔷 BAB 1 — Konversi ER ke Tabel Relasional**
 
-### 1. Entitas Kuat
-- Setiap entitas kuat menjadi **1 tabel**.
-- Simple atribut → kolom.
-- Atribut kunci → **Primary Key**.
+### **1. Entitas**
+- **Entitas Kuat** → satu tabel; simple atribut → kolom; PK = atribut kunci.
+- **Entitas Lemah** → tabel baru; PK = partial key + FK entitas kuat.
 
-### 2. Composite Atribut
-- Tidak jadi kolom langsung.
-- Dipecah menjadi simple atribut.
+### **2. Atribut**
+- **Komposit** → dipecah menjadi simple atribut.
+- **Multinilai** → dibuat menjadi tabel tersendiri.
+- **Turunan (Derived)** → opsional menjadi kolom.
 
-### 3. Multivalue Atribut
-- Dibuat menjadi **tabel baru**.
-- Berisi FK + nilai atribut.
+### **3. Relasi**
+- **1 : 1** → PK salah satu entitas menjadi FK di entitas lain.
+- **1 : N** → PK entitas “1” menjadi FK di entitas “N”.
+- **1 : N (dengan atribut relasi)** → dibuat tabel relasi khusus.
+- **M : N** → harus dibuat tabel relasi baru berisi dua FK.
+- **Unary** → satu tabel, tambahkan FK yang merujuk PK sendiri.
+- **Ternary** → relasi menjadi tabel yang berisi semua FK.
 
-### 4. Derived Atribut
-- Boleh dijadikan kolom, namun biasanya dihitung dari atribut lain.
+### **4. Generalisasi & Spesialisasi (GENSPEC)**
+- **Metode 1** → superclass & subclass masing-masing punya tabel.
+- **Metode 2** → subclass menggabungkan atribut superclass + miliknya.
 
-### 5. Entitas Lemah
-- Menjadi tabel.
-- PK = Partial key + FK dari entitas kuat.
+### **5. Agregasi**
+- Relasi agregasi menghasilkan tabel berisi semua FK entitas yang terkait.
+
+---
+
+## **🧪 Studi Kasus Skema Apotek**
+Entitas yang digunakan:
+`pasien`, `dokter`, `resep`, `detail_resep`, `obat`,  
+`kategori_obat`, `pegawai`, `pembayaran`.
+
+---
+
+## **🔷 BAB 2 — Pengantar Database & DDL**
+
+### **1. DBMS**
+Sistem untuk mengelola dan mengakses database. Contoh:
+- MySQL
+- PostgreSQL
+- Oracle
+- SQL Server
+
+### **2. MySQL**
+DBMS populer yang menggunakan bahasa SQL untuk mengelola data.
+
+### **3. Cara Mengakses MySQL (XAMPP Terminal)**
+
+```bash
+cd C:\xampp\mysql\bin
+mysql -u root -p
 
 ### 6. Relasi One-to-One (1:1)
 - PK salah satu entitas menjadi FK di entitas lainnya.
