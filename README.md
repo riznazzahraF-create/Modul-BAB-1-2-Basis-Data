@@ -1,120 +1,58 @@
-# 📚 Rangkuman Modul Basis Data — BAB 1 & BAB 2
-Dokumen ini merangkum konsep inti dari konversi ER ke model relasional serta pengantar Basis Data dan DDL.
-
+# 📘 Rangkuman Modul Basis Data — BAB 1 dan BAB 2
+rangkuman materi Basis Data supaya mudah dipahami dan dipelajari
 ---
 
-## **🔷 BAB 1 — Konversi ER ke Tabel Relasional**
+## 🔹 BAB 1 — Konversi ER ke Model Relasional
 
 ### **1. Entitas**
-- **Entitas Kuat** → satu tabel; simple atribut → kolom; PK = atribut kunci.
-- **Entitas Lemah** → tabel baru; PK = partial key + FK entitas kuat.
+- **Entitas Kuat** → menjadi satu tabel lengkap berisi seluruh simple atribut dengan primary key sebagai identitas unik.  
+- **Entitas Lemah** → dibentuk tabel baru dengan primary key gabungan (partial key + foreign key dari entitas kuat).
 
 ### **2. Atribut**
-- **Komposit** → dipecah menjadi simple atribut.
-- **Multinilai** → dibuat menjadi tabel tersendiri.
-- **Turunan (Derived)** → opsional menjadi kolom.
+- **Komposit** → dipecah menjadi beberapa simple atribut.  
+- **Multinilai** → dipisahkan ke dalam tabel khusus berisi foreign key + nilai atribut.  
+- **Turunan (Derived)** → dapat ditambahkan sebagai kolom jika diperlukan untuk efisiensi pemrosesan data.
 
-### **3. Relasi**
-- **1 : 1** → PK salah satu entitas menjadi FK di entitas lain.
-- **1 : N** → PK entitas “1” menjadi FK di entitas “N”.
-- **1 : N (dengan atribut relasi)** → dibuat tabel relasi khusus.
-- **M : N** → harus dibuat tabel relasi baru berisi dua FK.
-- **Unary** → satu tabel, tambahkan FK yang merujuk PK sendiri.
-- **Ternary** → relasi menjadi tabel yang berisi semua FK.
+### **3. Relasi Antar Entitas**
+- **One-to-One (1:1)** → salah satu tabel menyimpan FK dari tabel lainnya.  
+- **One-to-Many (1:N)** → entitas “Many” menyimpan FK dari entitas “One”.  
+- **One-to-Many dengan atribut relasi** → hubungan dibuat dalam tabel relasi terpisah.  
+- **Many-to-Many (M:N)** → dibentuk tabel relasi baru berisi FK dari kedua entitas.  
+- **Unary Relationship** → satu tabel dengan FK yang merujuk PK tabel sendiri.  
+- **Ternary** → satu tabel relasi memuat seluruh FK dari tiga entitas.
 
 ### **4. Generalisasi & Spesialisasi (GENSPEC)**
-- **Metode 1** → superclass & subclass masing-masing punya tabel.
-- **Metode 2** → subclass menggabungkan atribut superclass + miliknya.
+- **Metode 1** → superclass & subclass masing-masing memiliki tabel; PK superclass diwariskan ke subclass.  
+- **Metode 2** → subclass menggabungkan atribut superclass + atribut miliknya ke dalam satu tabel.
 
 ### **5. Agregasi**
-- Relasi agregasi menghasilkan tabel berisi semua FK entitas yang terkait.
+- Produksi tabel relasi yang memuat semua foreign key dari entitas yang terlibat dalam proses agregasi.
 
 ---
 
-## **🧪 Studi Kasus Skema Apotek**
+## 📌 Studi Kasus: Skema Pembayaran Apotek
 Entitas yang digunakan:
-`pasien`, `dokter`, `resep`, `detail_resep`, `obat`,  
-`kategori_obat`, `pegawai`, `pembayaran`.
+- `pasien`
+- `dokter`
+- `resep`
+- `detail_resep`
+- `obat`
+- `kategori_obat`
+- `pegawai`
+- `pembayaran`
 
 ---
 
-## **🔷 BAB 2 — Pengantar Database & DDL**
+## 🔹 BAB 2 — Pengantar Basis Data & DDL
 
 ### **1. DBMS**
-Sistem untuk mengelola dan mengakses database. Contoh:
-- MySQL
-- PostgreSQL
-- Oracle
-- SQL Server
+Perangkat lunak untuk mengelola database, termasuk penyimpanan, pengolahan, dan pengamanan data.
 
 ### **2. MySQL**
-DBMS populer yang menggunakan bahasa SQL untuk mengelola data.
+Salah satu DBMS yang paling banyak digunakan, mendukung operasi dasar SQL seperti pembuatan tabel, manipulasi data, dan kontrol akses.
 
-### **3. Cara Mengakses MySQL (XAMPP Terminal)**
-
-```bash
-cd C:\xampp\mysql\bin
-mysql -u root -p
-
-### 6. Relasi One-to-One (1:1)
-- PK salah satu entitas menjadi FK di entitas lainnya.
-
-### 7. Relasi One-to-Many (1:N)
-- PK entitas "One" menjadi FK di entitas "Many".
-
-### 8. One-to-Many dengan Atribut Relasi
-- Dibuat **3 tabel**: entitas 1, entitas 2, tabel relasi.
-
-### 9. Many-to-Many (M:N)
-- Dibuat tabel relasi baru.
-- Berisi FK dari kedua entitas + atribut relasi.
-
-### 10. Unary Relationship
-- Tetap 1 tabel.
-- Menambah FK yang merujuk PK tabel sendiri.
-
-### 11. Ternary Relationship
-- Dibuat tabel relasi berisi semua FK + atribut relasi.
-
-### 12. GENSPEC (Generalization & Specialization)
-**Metode 1**  
-- Superclass → tabel  
-- Subclass → tabel, PK superclass menjadi PK subclass  
-
-**Metode 2**  
-- Subclass → tabel dengan seluruh atribut superclass  
-
-### 13. Agregasi
-- Tabel relasi berisi FK dari semua entitas yang berpartisipasi.
-
----
-
-## 📚 Studi Kasus: Skema Pembayaran Apotek
-Entitas yang terlibat:
-- pasien
-- dokter
-- resep
-- detail_resep
-- obat
-- kategori_obat
-- pegawai
-- pembayaran
-
----
-
-## 📘 BAB 2 — Pengantar Basis Data & DDL
-
-### 1. DBMS
-Sistem untuk mengelola database, contoh:
-- MySQL
-- Oracle
-- PostgreSQL
-- SQL Server
-
-### 2. MySQL
-Salah satu DBMS populer yang menggunakan SQL sebagai bahasa utama.
-
-### 3. Akses MySQL (via XAMPP Terminal)
+### **3. Mengakses MySQL (XAMPP)**
+Gunakan terminal untuk masuk ke MySQL:
 
 ```bash
 cd C:\xampp\mysql\bin
