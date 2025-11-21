@@ -1,3 +1,10 @@
+## 📝 Table of Contents
+
+| No | Bagian       | Deskripsi                                                                 | Tautan |
+|----|--------------|---------------------------------------------------------------------------|--------|
+| 1  | **Pertemuan 1** | Penjelasan Bab 1 — *ERD* (Google Colab)                                    | 🔗 [Open Colab](https://colab.research.google.com/) |
+| 2  | **Pertemuan 2** | Penjelasan Bab 2 — *Pengantar Basis Data & DDL* (Google Colab)            | 🔗 [Open Colab](https://colab.research.google.com/) |
+
 # 📘 Rangkuman Modul Basis Data — BAB 1 & BAB 2
 Rangkuman basis data yang fleksibel dan mudah untuk dipelajari 
 
